@@ -1,7 +1,6 @@
 #coding=utf-8
 import os
 import numpy as np
-import scipy
 import cv2
 import xlrd
 from xlwt import *
@@ -27,6 +26,10 @@ if not os.path.exists(tar_folder):
 	os.mkdir(tar_folder)
 w = Workbook(encoding = 'utf-8')
 ws = w.add_sheet('result')
+ws.write(0, 0, 'Filename')
+ws.write(0, 1, 'Ground Truth')
+ws.write(0, 2, 'Prediction')
+
 gndtruth = pickle.load(open('./Network/data/gndtruth.pkl','rb'))
 
 
@@ -183,9 +186,9 @@ def predict(digit):
 def write_result(result, threshold, index, filename,imgsrc):
 	putText = ''.join(result[:5]) + '.' + ''.join(result[5:])
 	font = cv2.FONT_HERSHEY_SIMPLEX
-	ws.write(index,0,filename)
-	ws.write(index,1,gndtruth[filename])
-	ws.write(index,2,putText)
+	ws.write(index+1, 0, filename)
+	ws.write(index+1, 1, gndtruth[filename])
+	ws.write(index+1, 2, putText)
 
 	if putText[0:threshold] == gndtruth[filename][0:threshold]:
 		cv2.putText(imgsrc,putText,(10,50), font, 2,(255,195,25),2)
