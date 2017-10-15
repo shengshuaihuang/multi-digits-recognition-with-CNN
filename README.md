@@ -1,6 +1,6 @@
 # Multi Digits Recognition with CNN
 Multi digits recognition using CNN， Opencv and python. Recognize the five digits on the gas meter, resulting in a final correct rate of 91.61%(131/143). The correct and incorrect results are as follows (resized as 50%):  
-![correct reslt](correct.jpg) ![incorrect reslt](incorrect.jpg)
+![correct reslt](./correct.jpg) ![incorrect reslt](./incorrect.jpg)
 
 # Project
 ```
